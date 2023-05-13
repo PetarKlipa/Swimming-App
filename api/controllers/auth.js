@@ -44,7 +44,7 @@ const login = async (req, res, next) => {
             return res.status(500).json('Password is incorrect!')
         }
 
-        const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT)
+        const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT, {expiresIn: "20d"})
 
         const { password, isAdmin, ...other } = user._doc
         res.cookie('access_token', token, {

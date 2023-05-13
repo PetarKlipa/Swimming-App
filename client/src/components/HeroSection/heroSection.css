@@ -1,0 +1,45 @@
+.wrapper {
+  background-image: url("../../../public/pexels-guduru-ajay-bhargav-863988.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 500px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-container {
+    max-width: 1024px;
+    margin: auto;
+}
+
+.section-hero{
+    color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 50px;
+}
+
+.section-hero h1 {
+    font-size: 48px;
+      margin-bottom: 20px;
+}
+
+.section-hero p {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+button {
+    text-align: center;
+    width: 120px;
+    height: 40px;
+    background-color: white;
+    border: none;
+    font-size: 15px;
+    border-radius: 10%;
+    cursor: pointer;
+}
+
+
