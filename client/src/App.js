@@ -8,6 +8,7 @@ import {
 import { Home } from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import Compoetitions from './pages/competitions/Competitions'
 
 function App() {
   const router = createBrowserRouter([
@@ -22,6 +23,10 @@ function App() {
     {
       path: "/",
       element: <Home/>
+    },
+    {
+      path:'/competitions',
+      element: <Compoetitions/>
     }
   ]);
 
