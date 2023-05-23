@@ -16,17 +16,50 @@ const createSwimmers = async (req, res, next) => {
     await newSwimmer.save();
     res.status(201).json({ newSwimmer });
   } catch (error) {
-    console.log(error);
+    res.status(500).json(error);
   }
 };
 
-const deleteSwimmers = async (req, res, next) => {};
+const deleteSwimmers = async (req, res, next) => {
+  try {
+    await Swimmer.findByIdAndDelete(req.params.id);
+    res.status(201).json("Swimmer has been deleted");
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
 
-const updateSwimmers = async (req, res, next) => {};
+const updateSwimmers = async (req, res, next) => {
+  try {
+    const newSwimmer = await Swimmer.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true }
+    );
+    res.status(201).json(newSwimmer);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
 
-const getSwimmer = async (req, res, next) => {};
+const getSwimmer = async (req, res, next) => {
+  const swimmer = await Swimmer.findById(req.params.id);
 
-const getAllSwimmers = async (req, res, next) => {};
+  if(!swimmer){
+    res.status(500).json("Swimmer dose not exist!");
+  } else {
+    res.status(201).json(swimmer);
+  }
+};
+
+const getAllSwimmers = async (req, res, next) => {
+  try {
+    const swimmers = await Swimmer.find({});
+    res.status(201).json(swimmers);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
 
 module.exports = {
   createSwimmers,
