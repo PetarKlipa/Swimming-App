@@ -11,8 +11,11 @@ const connectDB = require("./db/connect");
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const competitionRoute = require("./routes/competitions");
+const swimmersRoute = require("./routes/swimmers");
 
 //middlewares
+const {errorStatus} = require('./middleware/errorStatus')
+
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors());
@@ -20,18 +23,9 @@ app.use(cors());
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/competitions", competitionRoute);
-//app.use('/api/v1/swimmers',)
+app.use("/api/v1/swimmers", swimmersRoute);
 
-app.use((err, req, res, next) => {
-  const errorStatus = err.status || 500;
-  const errorMessage = err.message || "Something went wrong!";
-  return res.status(errorStatus).json({
-    success: false,
-    status: errorStatus,
-    message: errorMessage,
-    stack: err.stack,
-  });
-});
+app.use(errorStatus);
 
 //port
 const port = 5000;

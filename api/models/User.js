@@ -12,14 +12,6 @@ const UserSchema = new mongoose.Schema(
         required: true,
         unique: true,
       },
-      country: {
-        type: String,
-       required: false,
-      },
-      city: {
-        type: String,
-        required: false,
-      },
       phone: {
         type: String,
         required: false,
@@ -49,10 +41,6 @@ const UserSchema = new mongoose.Schema(
         type: String,
         required: true,
       },
-      lastname:{
-        type: String,
-        required: false,
-      }
     },
     { timestamps: true }
 );
