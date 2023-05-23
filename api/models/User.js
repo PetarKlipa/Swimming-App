@@ -14,15 +14,15 @@ const UserSchema = new mongoose.Schema(
       },
       country: {
         type: String,
-        required: true,
+       required: false,
       },
       city: {
         type: String,
-        required: true,
+        required: false,
       },
       phone: {
         type: String,
-        required: true,
+        required: false,
       },
       password: {
         type: String,
@@ -38,7 +38,7 @@ const UserSchema = new mongoose.Schema(
             values: ['male', 'female'],
             message: '{VALUE} is not supported'
         },
-        required: true,
+        required: false,
       },
       dob:{
         type : Date,
@@ -51,7 +51,7 @@ const UserSchema = new mongoose.Schema(
       },
       lastname:{
         type: String,
-        required: true,
+        required: false,
       }
     },
     { timestamps: true }
