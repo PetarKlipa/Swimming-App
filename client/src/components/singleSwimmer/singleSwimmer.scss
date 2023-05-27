@@ -1,0 +1,39 @@
+.searchOne {
+  
+  padding: 5px;
+  width: 1024px;
+  margin: auto;
+  border: 1px solid grey;
+  border-radius: 1%;
+  display: flex;
+  gap: 5px;
+   .item {
+    padding: 5px;
+    height: 180px;
+  }
+
+  .slika {
+    background-image: url("../../../public/download.png");
+    background-size: cover;
+    background-position: center;
+    flex: 1;
+  }
+
+  .desc {
+    line-height: 40px;
+    span{
+        display: block;
+    }
+    flex: 3;
+  }
+  .dugme {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    button{
+        margin-bottom: 10px
+    }
+    flex: 1;
+  }
+}
