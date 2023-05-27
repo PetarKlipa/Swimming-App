@@ -18,7 +18,7 @@ const register = async (req, res, next) => {
         })
 
         await newUser.save()
-        res.status(201).json({newUser})
+        res.status(201).send("User has been created.")
     } catch (error) {
         res.status(500).json(error)
     }
@@ -45,7 +45,7 @@ const login = async (req, res, next) => {
         const { password, isAdmin, ...other } = user._doc
         res.cookie('access_token', token, {
             httpOnly: true,
-        }).status(200).json({ ...other })
+        }).status(200).json({details:{ ...other }, isAdmin})
     } catch (error) {
         res.status(500).json(error)
     }

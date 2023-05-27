@@ -13,6 +13,7 @@ export const Home = () => {
       <CompetitionSection/>
     </div>
   );
+  
 };
 
 export default Home;
