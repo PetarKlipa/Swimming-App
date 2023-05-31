@@ -1,38 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./swimmers.scss";
 import Announcement from "../../components/Announcement/Announcement";
 import Navbar from "../../components/navbar/Navbar";
 import SearchSwimmer from "../../components/searchSwimmer/SearchSwimmer";
 import SingleSwimmer from "../../components/singleSwimmer/SingleSwimmer";
-import useFetch from '../../hooks/useFetch'
-
+import axios from "axios";
 
 const Swimmers = () => {
+  const [swimmers, setSwimmers] = useState([]);
 
-  const {data, loading, error, reFetch} = useFetch(
-    'http://localhost:5000/api/v1/swimmers'
-  )
-  console.log(data);
+  useEffect(() => {
+    fetchSwimmers();
+  }, []);
 
-  const handleClic2 = () => {
-    reFetch();
+  const fetchSwimmers = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5000/api/v1/swimmers/"
+      );
+      setSwimmers(response.data);
+    } catch (error) {
+      console.log("Error fetching swimmers:", error);
+    }
   };
 
   return (
     <div>
       <Announcement />
       <Navbar />
-      <SearchSwimmer/>
+      <SearchSwimmer />
       <div className="list">
-      {loading ? (
-              "loading"
-            ) : (
-              <>
-                {data.map((item) => (
-                  <SingleSwimmer item={item} key={item._id} />
-                ))}
-              </>
-            )}
+        {swimmers.map((swimmer) => (
+          <SingleSwimmer key={swimmer._id} item={swimmer}/>
+        ))}
       </div>
     </div>
   );

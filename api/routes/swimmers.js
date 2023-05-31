@@ -8,7 +8,7 @@ router.post('/',verifyUser, createSwimmers)
 router.delete('/:id',verifyUser, deleteSwimmers)
 router.patch('/:id',verifyUser, updateSwimmers)
 router.get('/:id',verifyUser, getSwimmer)
-router.get('/',verifyUser, getAllSwimmers)
+router.get('/', getAllSwimmers)
 
 
 module.exports = router;
